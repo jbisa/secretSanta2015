@@ -18,7 +18,7 @@ angular.module('secretSanta', ['ionic', 'secretSanta.controllers', 'secretSanta.
   }); 
 })
 
-.config(function($stateProvider, $urlRouteProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('auth', {
       url: "/auth",
@@ -35,44 +35,18 @@ angular.module('secretSanta', ['ionic', 'secretSanta.controllers', 'secretSanta.
       }
     })
     .state('auth.signup', {
-      url: '/singup',
+      url: '/signup',
       views: {
         'auth-signup': {
           templateUrl: 'templates/auth-signup.html',
-          controller: 'SignUpStrl'
+          controller: 'SignUpCtrl'
         }
       }
     })
-  $urlRouteProvider.otherwise('/auth/signin');
+    .state('buyPresentFor', {
+      url: '/buyPresentFor',
+      abstract: true,
+      templateUrl: "templates/buyPresentFor.html"
+    })
+  $urlRouterProvider.otherwise('/auth/signin');
 });
-
-/*
-.controller('SecretSantaCtrl', function($scope) {
-  $scope.users = [
-    {
-      name: 'Tom Brady',
-      email: 'tom.brady@gmail.com'
-    },
-    {
-      name: 'Dion Lewis',
-      email: 'dion.lewis@gmail.com'
-    },
-    {
-      name: 'Malcolm Butler',
-      email: 'malcolm.butler@gmail.com'
-    }
-  ];
-
-  // Called when a new user is submitted
-  $scope.createUser = function(user) {
-    $scope.users.push({
-      name: user.name,
-      email: user.email
-    });
-
-    // Clear the input fields
-    user.name = "";
-    user.email = "";
-  }
-
-  })*/ 
