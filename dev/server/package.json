@@ -1,0 +1,20 @@
+{
+  "name": "secretSanta",
+  "version": "1.0.0",
+  "description": "A RESTful backend for Secret Santa 2015 app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wovfn",
+  "license": "ISC",
+  "engines": {
+    "node": "0.10.x"
+  }
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "mongojs": "^1.3.0",
+    "morgan": "^1.6.1",
+    "restify": "^4.0.3"
+  }
+}
