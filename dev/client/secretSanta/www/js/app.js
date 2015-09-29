@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('secretSanta', ['ionic'])
+angular.module('secretSanta', ['ionic', 'secretSanta.controllers', 'secretSanta.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,6 +18,35 @@ angular.module('secretSanta', ['ionic'])
   }); 
 })
 
+.config(function($stateProvider, $urlRouteProvider) {
+  $stateProvider
+    .state('auth', {
+      url: "/auth",
+      abstract: true,
+      templateUrl: "templates/auth.html"
+    })
+    .state('auth.signin', {
+      url: '/signin',
+      views: {
+        'auth-signin': {
+          templateUrl: 'templates/auth-signin.html',
+          controller: 'SignInCtrl'
+        }
+      }
+    })
+    .state('auth.signup', {
+      url: '/singup',
+      views: {
+        'auth-signup': {
+          templateUrl: 'templates/auth-signup.html',
+          controller: 'SignUpStrl'
+        }
+      }
+    })
+  $urlRouteProvider.otherwise('/auth/signin');
+});
+
+/*
 .controller('SecretSantaCtrl', function($scope) {
   $scope.users = [
     {
@@ -46,4 +75,4 @@ angular.module('secretSanta', ['ionic'])
     user.email = "";
   }
 
-  }) 
+  })*/ 
