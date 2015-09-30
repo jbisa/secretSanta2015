@@ -16,6 +16,7 @@ angular.module('secretSanta.controllers', ['secretSanta.services'])
 		var password = this.user.password;
 
 		if (!email || !password) {
+			alert("Please enter valid credentials!");
 			$rootScope.notify("Please enter valid credentials!");
 			return false;
 		}
@@ -26,11 +27,14 @@ angular.module('secretSanta.controllers', ['secretSanta.services'])
 			email: email,
 			password: password
 		}).success(function (data) {
+			alert(1);
+			alert(data);
 			$rootScope.setToken(email);
 			$rootScope.hide();
 			$window.location.href = ('#/buyPresentFor');
 		}).error(function (error) {
 			$rootScope.hide();
+			alert("Invalid username or password!");
 			$rootScope.notify("Invalid username or password!");
 		});
 	}
@@ -49,6 +53,7 @@ angular.module('secretSanta.controllers', ['secretSanta.services'])
 		var userName = this.user.name;
 
 		if (!email || !password || !userName) {
+			alert("Please enter valid information!");
 			$rootScope.notify("Please enter valid information!");
 			return false;
 		}
@@ -65,11 +70,8 @@ angular.module('secretSanta.controllers', ['secretSanta.services'])
 			$window.location.href = ('#/buyPresentFor');
 		}).error(function (error) {
 			$rootScope.hide();
-			if (error.error && error.error.code == 11000) {
-				$rootScope.notify("A user with this email already exists!");
-			} else {
-				$rootScope.notify("Uh ohh, something went wrong...please try again!");
-			}
+			alert("Uh ohh, something went wrong...please try again!");
+			$rootScope.notify("Uh ohh, something went wrong...please try again!");
 		});
 	}
 })
