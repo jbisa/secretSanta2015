@@ -1,6 +1,6 @@
 angular.module('secretSanta.services', [])
 	.factory('API', function ($rootScope, $http, $ionicLoading, $window) {
-		var base = "http://localhost:9804";
+		var base = "http://localhost:8100";
 		$rootScope.show = function (text) {
 			$rootScope.loading = $ionicLoading.show({
 				content: text ? text : 'Loading',

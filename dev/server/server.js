@@ -19,6 +19,6 @@ server.use(function(req, res, next) {
 });
 
 // Start the server
-server.listen(process.env.PORT || 9804, function () {
-	console.log("Server started @ ", process.env.PORT || 9804);
+server.listen(process.env.PORT || 8100, function () {
+	console.log("Server started @ ", process.env.PORT || 8100);
 });
